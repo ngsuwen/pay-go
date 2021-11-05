@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/paygo/static/css/main.bab0b925.chunk.css",
+    "main.js": "/paygo/static/js/main.a84ddc00.chunk.js",
+    "main.js.map": "/paygo/static/js/main.a84ddc00.chunk.js.map",
+    "runtime-main.js": "/paygo/static/js/runtime-main.2f7081fc.js",
+    "runtime-main.js.map": "/paygo/static/js/runtime-main.2f7081fc.js.map",
+    "static/js/2.9afece35.chunk.js": "/paygo/static/js/2.9afece35.chunk.js",
+    "static/js/2.9afece35.chunk.js.map": "/paygo/static/js/2.9afece35.chunk.js.map",
+    "index.html": "/paygo/index.html",
+    "static/css/main.bab0b925.chunk.css.map": "/paygo/static/css/main.bab0b925.chunk.css.map",
+    "static/js/2.9afece35.chunk.js.LICENSE.txt": "/paygo/static/js/2.9afece35.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2f7081fc.js",
+    "static/js/2.9afece35.chunk.js",
+    "static/css/main.bab0b925.chunk.css",
+    "static/js/main.a84ddc00.chunk.js"
+  ]
+}
