@@ -15,7 +15,7 @@ export default function ProductCard({ data }) {
             boxShadow: 0
         }}>
             <CardActionArea sx={{
-                '& .MuiCardActionArea-focusHighligh':{backgroundColor:'black'}
+                focusHighlight: {backgroundColor:"black"}
             }}>
                 <div
                     style={{
