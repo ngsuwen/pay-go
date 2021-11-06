@@ -1,21 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
 
-export default function FetchData({ data }) {
-
-    const styles = {
-        height: '20vw',
-        width: '15vw',
-        backgroundImage: `url(${data.image})`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-    }
-
+export default function ProductCard({ data }) {
     return (
-        <>
-        <p>{data.title}</p>
-        <p>{data.price}</p>
-        <div style={styles}/>
-        </>
+        <Card style={{ maxWidth: 300, maxHeight: 450, margin: 5 }}>
+            <CardActionArea>
+                <div
+                    style={{
+                        display: "flex",
+                        alignItem: "center",
+                        justifyContent: "center"
+                    }}
+                >
+                    <CardMedia
+                        style={{ width: 'auto', maxWidth: 250, maxHeight: 300 }}
+                        component='img'
+                        image={data.image}
+                        alt={data.title}
+                    />
+                </div>
+                <CardContent>
+                    <Typography gutterBottom variant="subtitle2" component="div">
+                        {data.title}
+                    </Typography>
+                    <Typography variant="subtitle2" color="text.secondary">
+                        US$ {data.price}
+                    </Typography>
+                </CardContent>
+            </CardActionArea>
+        </Card>
     );
 };
