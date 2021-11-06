@@ -13,11 +13,12 @@ export default function ProductCard({ data }) {
                     style={{
                         display: "flex",
                         alignItem: "center",
-                        justifyContent: "center"
+                        justifyContent: "center",
+                        height: 300
                     }}
                 >
                     <CardMedia
-                        style={{ width: 'auto', maxWidth: 250, maxHeight: 300 }}
+                        style={{ maxWidth: 250, maxHeight: 280, objectFit: 'scale-down' }}
                         component='img'
                         image={data.image}
                         alt={data.title}
