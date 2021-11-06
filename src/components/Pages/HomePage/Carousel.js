@@ -1,25 +1,77 @@
 import React from 'react';
-import { CarouselProvider, Slider, Slide} from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+import Carousel from 'react-material-ui-carousel';
+import { Box, Card, CardContent, CardMedia, Typography, Grid, Button } from '@mui/material';
 
-export default function Carousel() {
+const CCard = () => {
     return (
-        <div style={{maxWidth:1200, margin:'auto'}}>
-            <div style={{ maxWidth: 750 }}>
-                <CarouselProvider
-                    naturalSlideWidth={100}
-                    naturalSlideHeight={48}
-                    totalSlides={3}
-                    isPlaying={true}
-                    interval={2500}
+        <Card>
+            <Box sx={{ position: 'relative' }}>
+                <CardMedia
+                    draggable="false"
+                    component="img"
+                    height="450"
+                    image="https://source.unsplash.com/featured/?lamp"
+                />
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        width: '100%',
+                        bgcolor: 'rgba(0, 0, 0, 0.5)',
+                        color: 'white',
+                        padding: '10px',
+                    }}
                 >
-                    <Slider>
-                        <Slide index={0}><img src='https://www.muji.com/sg/feature/anniversary/2021/contents/uploads/main-7-768x384.jpg'/></Slide>
-                        <Slide index={1}><img src='https://www.muji.com/sg/feature/anniversary/2021/contents/uploads/main-4-768x432.jpg'/></Slide>
-                        <Slide index={2}><img src='https://www.muji.com/sg/feature/anniversary/2021/contents/uploads/main-5-768x366.jpg'/></Slide>
-                    </Slider>
-                </CarouselProvider>
-            </div>
+                    <Typography variant="h5">Lizard</Typography>
+                    <Typography variant="body2">Subtitle</Typography>
+                </Box>
+                
+            </Box>
+        </Card>
+    )
+}
+
+const Item = () => {
+    return (
+        <Grid container spacing={0}>
+            <Grid item xs={4}>
+                <CCard />
+            </Grid>
+            <Grid item xs={4}>
+                <CCard />
+            </Grid>
+            <Grid item xs={4}>
+                <CCard />
+            </Grid>
+        </Grid>
+    );
+};
+
+export default function ProductCarousel() {
+    const items = [
+        {
+            name: 'Aya Bouchiha',
+            description: 'Full Stack Web Developer',
+        },
+        {
+            name: 'John Doe',
+            description: 'Author',
+        },
+        {
+            name: 'Pitsu Coma',
+            description: 'Math Student',
+        },
+    ];
+
+    return (
+        <div style={{ maxWidth: 1000, margin: 'auto', height: 450 }}>
+            <Carousel>
+                {items.map((item, i) => (
+                    <Item key={i} {...item} />
+                ))}
+            </Carousel>
         </div>
     );
 }
+
