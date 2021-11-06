@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Products from './ProductCard';
+import Products from '../src/components/ProductCard';
 import Grid from '@mui/material/Grid';
 
 export default function FetchData() {

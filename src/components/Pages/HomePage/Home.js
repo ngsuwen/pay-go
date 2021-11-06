@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import Carousel from './Carousel';
 
 const StyledTabs = styled((props) => (
     <Tabs
@@ -46,6 +47,7 @@ export default function CustomizedTabs() {
     };
 
     return (
+        <>
         <Box sx={{ marginBottom: 5 }}>
             <StyledTabs
                 value={value}
@@ -62,5 +64,7 @@ export default function CustomizedTabs() {
                 <StyledTab label="SEARCH" />
             </StyledTabs>
         </Box>
+        <Carousel/>
+        </>
     );
 }
