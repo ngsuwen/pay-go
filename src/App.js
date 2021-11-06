@@ -1,9 +1,14 @@
 import "./App.css";
-import ProductsList from './components/ProductsList'
+import Home from './components/Pages/Home';
+import Products from './components/ProductsList';
+
 
 function App() {
   return(
-    <ProductsList/>
+    <>
+    <Home/>
+    <Products/>
+    </>
   );
 }
 
