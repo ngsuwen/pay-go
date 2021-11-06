@@ -1,13 +1,13 @@
 import "./App.css";
 import Home from './components/Pages/Home';
-import Products from './components/ProductsList';
-
+import Category from './components/Pages/Category';
 
 function App() {
   return(
     <>
-    <Home/>
-    <Products/>
+    <Home/> 
+    <Category category="women's%20clothing"/> 
+    {/* jewelery electronics men's%20clothing women's%20clothing*/}
     </>
   );
 }

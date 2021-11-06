@@ -19,14 +19,14 @@ const StyledTabs = styled((props) => (
         maxWidth: 40,
         width: '100%',
         backgroundColor: 'rgb(128,128,128)',
-    },
+    }
 });
 
 const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     ({ theme }) => ({
         textTransform: 'none',
         fontWeight: theme.typography.fontWeightRegular,
-        fontSize: theme.typography.pxToRem(15),
+        fontSize: theme.typography.pxToRem(13),
         marginRight: theme.spacing(1),
         color: 'rgb(169,169,169)',
         '&.Mui-selected': {
@@ -50,11 +50,16 @@ export default function CustomizedTabs() {
             <StyledTabs
                 value={value}
                 onChange={handleChange}
+                centered
             >
-                <StyledTab label="Electronics" />
-                <StyledTab label="Jewelry" />
-                <StyledTab label="Mens" />
-                <StyledTab label="Womens" />
+                <StyledTab label="HOME" />
+                <StyledTab label="ELECTRONICS" />
+                <StyledTab label="JEWELRY" />
+                <StyledTab label="MENS" />
+                <StyledTab label="WOMENS" />
+                <StyledTab label="SIGN IN" />
+                <StyledTab label="CART" />
+                <StyledTab label="SEARCH" />
             </StyledTabs>
         </Box>
     );
