@@ -28,7 +28,7 @@ export default function FetchData() {
 
     return (
         <>
-        <Grid container spacing={0.5} margin='auto'>
+        <Grid sx={{justifyContent: 'center'}} container spacing={0.5} >
             {products}
         </Grid>
         </>

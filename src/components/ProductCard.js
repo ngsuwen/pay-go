@@ -14,7 +14,12 @@ export default function ProductCard({ data }) {
         }} sx={{
             boxShadow: 0
         }}>
-            <CardActionArea>
+            <CardActionArea sx={{
+                '&:hover':{opacity:0.8},
+                '.MuiCardActionArea-focusHighlight': {
+                    bgcolor: 'white',
+                }
+            }}>
                 <div
                     style={{
                         display: "flex",
