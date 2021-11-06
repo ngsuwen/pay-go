@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { CardActionArea } from '@mui/material';
 
 export default function ProductCard({ data }) {
     return (
@@ -14,9 +14,7 @@ export default function ProductCard({ data }) {
         }} sx={{
             boxShadow: 0
         }}>
-            <CardActionArea sx={{
-                focusHighlight: {backgroundColor:"black"}
-            }}>
+            <CardActionArea>
                 <div
                     style={{
                         display: "flex",
