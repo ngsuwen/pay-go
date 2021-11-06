@@ -7,28 +7,40 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 
 export default function ProductCard({ data }) {
     return (
-        <Card style={{ maxWidth: 300, maxHeight: 450, margin: 5 }}>
-            <CardActionArea>
+        <Card style={{
+            width: 280,
+            height: 380,
+            margin: 5
+        }} sx={{
+            boxShadow: 0
+        }}>
+            <CardActionArea sx={{
+                '& .MuiCardActionArea-focusHighligh':{backgroundColor:'black'}
+            }}>
                 <div
                     style={{
                         display: "flex",
                         alignItem: "center",
                         justifyContent: "center",
-                        height: 300
+                        height: 250
                     }}
                 >
                     <CardMedia
-                        style={{ maxWidth: 250, maxHeight: 280, objectFit: 'scale-down' }}
+                        style={{
+                            maxWidth: 230,
+                            maxHeight: 250,
+                            objectFit: 'scale-down'
+                        }}
                         component='img'
                         image={data.image}
                         alt={data.title}
                     />
                 </div>
                 <CardContent>
-                    <Typography gutterBottom variant="subtitle2" component="div">
+                    <Typography textAlign='center' gutterBottom variant="subtitle2" component="div">
                         {data.title}
                     </Typography>
-                    <Typography variant="subtitle2" color="text.secondary">
+                    <Typography textAlign='center' variant="subtitle2" color="text.secondary">
                         US$ {data.price}
                     </Typography>
                 </CardContent>
