@@ -8,8 +8,8 @@ import { CardActionArea } from '@mui/material';
 export default function ProductCard({ data }) {
     return (
         <Card style={{
-            width: 280,
-            height: 380,
+            width: 220,
+            height: 330,
             margin: 5
         }} sx={{
             boxShadow: 0
@@ -25,13 +25,13 @@ export default function ProductCard({ data }) {
                         display: "flex",
                         alignItem: "center",
                         justifyContent: "center",
-                        height: 250
+                        height: 200
                     }}
                 >
                     <CardMedia
                         style={{
-                            maxWidth: 230,
-                            maxHeight: 250,
+                            maxWidth: 150,
+                            maxHeight: 200,
                             objectFit: 'scale-down'
                         }}
                         component='img'

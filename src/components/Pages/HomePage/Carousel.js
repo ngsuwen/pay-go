@@ -29,7 +29,7 @@ const CCard = ({ data }) => {
                             padding: '10px',
                         }}
                     >
-                        <Typography variant="h6">{data.name}</Typography>
+                        <Typography variant="subtitle1">{data.name}</Typography>
                     </Box>
 
                 </Box>
@@ -96,7 +96,7 @@ const Item = ({ num, arr }) => {
 export default function ProductCarousel() {
 
     return (
-        <div style={{ maxWidth: 1000, margin: 'auto', height: 450 }}>
+        <div style={{ maxWidth: 1000, margin: 'auto' }}>
             <Carousel>
                 <Item num={0} arr={dataArray1} />
                 <Item num={1} arr={dataArray2} />
