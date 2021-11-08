@@ -30,7 +30,7 @@ export default function FetchData() {
 
     return (
         <>
-        <div style={{maxWidth:1200, margin:'auto'}}>
+        <div style={{minHeight: '72vh', maxWidth:1200, margin:'auto'}}>
         <Grid sx={{justifyContent: 'center'}} container spacing={0.5} >
             {products}
         </Grid>
