@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Products from '../../ProductCard';
 import Grid from '@mui/material/Grid';
+import Products from '../../ProductCard';
 
 export default function FetchData({category}) {
     const [data, setData] = useState([]);
