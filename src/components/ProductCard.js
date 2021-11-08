@@ -11,7 +11,7 @@ export default function ProductCard({ data }) {
             boxShadow: 0
         }}>
             <CardActionArea sx={{
-                '&:hover':{opacity:0.8},
+                '&:hover':{opacity:0.7},
                 '.MuiCardActionArea-focusHighlight': {
                     bgcolor: 'white',
                 }

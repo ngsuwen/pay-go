@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled, Tabs, Tab, Box } from '@mui/material';
+import {Link} from 'react-router-dom';
 
 const StyledTabs = styled((props) => (
     <Tabs
@@ -19,7 +20,7 @@ const StyledTabs = styled((props) => (
     }
 });
 
-const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
+const StyledTab = styled((props) => <Link style={{textDecoration:'none'}}to={`${props.link}`}><Tab disableRipple {...props} /></Link>)(
     ({ theme }) => ({
         textTransform: 'none',
         fontWeight: theme.typography.fontWeightRegular,
@@ -49,11 +50,11 @@ export default function CustomizedTabs() {
                 onChange={handleChange}
                 centered
             >
-                <StyledTab label="HOME" />
-                <StyledTab label="ELECTRONICS" />
-                <StyledTab label="JEWELRY" />
-                <StyledTab label="MENS" />
-                <StyledTab label="WOMENS" />
+                <StyledTab label="HOME" link='/'/>
+                <StyledTab label="ELECTRONICS" link='electronics' />
+                <StyledTab label="JEWELLERY" link='jewelery'/>
+                <StyledTab label="MENS" link="men's%20clothing"/>
+                <StyledTab label="WOMENS" link="women's%20clothing"/>
                 <StyledTab label="SIGN IN" />
                 <StyledTab label="CART" />
                 <StyledTab label="SEARCH" />
