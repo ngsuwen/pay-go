@@ -5,7 +5,7 @@ export default function ProductCard({ data }) {
     return (
         <Card style={{
             width: 220,
-            height: 330,
+            minHeight: 330,
             margin: 5
         }} sx={{
             boxShadow: 0

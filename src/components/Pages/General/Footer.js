@@ -1,16 +1,44 @@
 import React from 'react';
-import { AppBar, Container, Toolbar, Typography } from '@mui/material';
+import { Typography, TableContainer, Table, TableRow, TableCell, TableHead, TableBody } from '@mui/material';
+
+function createData(text, link, text2, link2) {
+  return { text, link, text2, link2 };
+}
+
+const rows = [
+  createData('About Us', '/', 'Partnerships', '/'),
+  createData('Contact Us', '/', 'Quality', '/'),
+  createData('FAQ', '/', 'Shipping', '/'),
+];
 
 export default function Footer() {
-    return (
-        <AppBar sx={{bgcolor: '#e0e0e0'}} position="static">
-          <Container maxWidth="md">
-            <Toolbar>
-              <Typography variant="subtitle2" color="#757575">
-                © 2021 GA Suwen
-              </Typography>
-            </Toolbar>
-          </Container>
-        </AppBar>
-    )
+  return (
+    <>
+      <div style={{ backgroundColor: '#eceff1', position: "static", padding: '0.5em' }} >
+        <TableContainer sx={{ display: 'flex', justifyContent: "center" }}>
+          <Table sx={{ maxWidth: 1000 }}>
+
+            <TableRow>
+              <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left', fontWeight: 'bold' }} width='20%' >COMPANY</TableCell>
+              <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left', fontWeight: 'bold' }} width='25%' >PRODUCTS</TableCell>
+              <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left', color: '#757575' }} rowSpan={4}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid sequatur, quid repugnet, vident. Quae sequuntur igitur? Non semper, inquam; Qui ita affectus, beatum esse numquam probabis; Duo Reges: constructio interrete. Tibi hoc incredibile, quod beatissimum.</TableCell>
+            </TableRow>
+
+              {rows.map((row) => (
+                <TableRow>
+                  <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left', color:'#757575' }} >{row.text}</TableCell>
+                  <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left', color:'#757575' }} >{row.text2}</TableCell>
+                </TableRow>
+              ))}
+
+          </Table>
+        </TableContainer>
+      </div>
+      <div style={{ backgroundColor: '#757575', position: "static", padding: '0.3em' }}>
+        <Typography variant="subtitle2" sx={{ flexGrow: 1, textAlign: "center" }} color="#e0e0e0">
+          © 2021 GA Suwen
+        </Typography>
+      </div>
+    </>
+  )
 }

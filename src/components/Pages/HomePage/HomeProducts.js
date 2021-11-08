@@ -28,7 +28,7 @@ export default function FetchData({category}) {
 
     return (
         <>
-        <div style={{maxWidth:1200, margin:'auto'}}>
+        <div style={{maxWidth:1000, margin:'auto'}}>
         <Grid sx={{justifyContent: 'center'}} container spacing={0.5} >
             {products}
         </Grid>
