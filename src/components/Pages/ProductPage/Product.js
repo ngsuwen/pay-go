@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
-import { Box, Container, Card, CardContent, Typography, CardMedia } from '@mui/material';
+import { IconButton, Box, Container, Card, CardContent, Typography, CardMedia } from '@mui/material';
+import QtySelector from "./QtySelector";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export default function ProductPage() {
     const params = useParams();
@@ -27,7 +29,7 @@ export default function ProductPage() {
 
     return (
         <Container maxWidth='lg'>
-            <Card sx={{ display: 'flex', justifyContent:'center', alignItems:'center', padding:'50px 50px 75px', boxShadow:'none' }}>
+            <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '50px 50px 75px', boxShadow: 'none' }}>
                 <CardMedia
                     component="img"
                     sx={{ width: 300, padding: 5 }}
@@ -36,23 +38,28 @@ export default function ProductPage() {
                 />
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent>
-                        <Typography sx={{padding:1}} variant="h6" fontWeight='bold'>
+                        <Typography sx={{ padding: 1 }} variant="h6" fontWeight='bold'>
                             {data.title}
                         </Typography>
-                        <Typography sx={{padding:1}} variant="subtitle1" >
-                            {data.rating?data.rating.rate:''}/5 ({data.rating?data.rating.count:''})
+                        <Typography sx={{ padding: 1 }} variant="subtitle1" >
+                            {data.rating ? data.rating.rate : ''}/5 ({data.rating ? data.rating.count : ''})
                         </Typography>
-                        <Typography sx={{padding:1}} variant="subtitle1" color="text.secondary" >
+                        <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary" >
                             {data.description}
                         </Typography>
-                        <Typography sx={{padding:1}} variant="subtitle1" color="text.secondary">
-                            US ${data.price}<br/>
-                            #Quantity
-                            #AddToCart
+                        <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
+                            US ${data.price}
                         </Typography>
+                        <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
+                            Quantity:<br />
+                        </Typography>
+                        <QtySelector />
+                        <IconButton aria-label="add to shopping cart">
+                            <AddShoppingCartIcon />
+                        </IconButton>
                     </CardContent>
                 </Box>
             </Card>
-        </Container>
+        </Container >
     );
 };
