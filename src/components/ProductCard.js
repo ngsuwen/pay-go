@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardMedia, CardActionArea, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia, CardActionArea, Typography, Box } from '@mui/material';
 import { Link } from "react-router-dom"
 
 export default function ProductCard({ data }) {
@@ -18,8 +18,8 @@ export default function ProductCard({ data }) {
                         bgcolor: 'white',
                     }
                 }}>
-                    <div
-                        style={{
+                    <Box
+                        sx={{
                             display: "flex",
                             alignItem: "center",
                             justifyContent: "center",
@@ -36,7 +36,7 @@ export default function ProductCard({ data }) {
                             image={data.image}
                             alt={data.title}
                         />
-                    </div>
+                    </Box>
                     <CardContent>
                         <Typography textAlign='center' gutterBottom variant="subtitle2" component="div">
                             {data.title}

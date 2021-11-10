@@ -29,7 +29,7 @@ export default function FetchData() {
     }, [params.category]);
 
     return (
-        <Container maxWidth='lg'>
+        <Container maxWidth='lg' sx={{minHeight:'62vh'}}>
             <Grid sx={{ justifyContent: 'center' }} container spacing={0.5} >
                 {products}
             </Grid>
