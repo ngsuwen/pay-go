@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/pay-go/static/css/main.bab0b925.chunk.css",
-    "main.js": "/pay-go/static/js/main.fb607d54.chunk.js",
-    "main.js.map": "/pay-go/static/js/main.fb607d54.chunk.js.map",
+    "main.js": "/pay-go/static/js/main.c8605c23.chunk.js",
+    "main.js.map": "/pay-go/static/js/main.c8605c23.chunk.js.map",
     "runtime-main.js": "/pay-go/static/js/runtime-main.96e5731b.js",
     "runtime-main.js.map": "/pay-go/static/js/runtime-main.96e5731b.js.map",
-    "static/js/2.b41f1cb0.chunk.js": "/pay-go/static/js/2.b41f1cb0.chunk.js",
-    "static/js/2.b41f1cb0.chunk.js.map": "/pay-go/static/js/2.b41f1cb0.chunk.js.map",
+    "static/js/2.4fd07bd5.chunk.js": "/pay-go/static/js/2.4fd07bd5.chunk.js",
+    "static/js/2.4fd07bd5.chunk.js.map": "/pay-go/static/js/2.4fd07bd5.chunk.js.map",
     "index.html": "/pay-go/index.html",
     "static/css/main.bab0b925.chunk.css.map": "/pay-go/static/css/main.bab0b925.chunk.css.map",
-    "static/js/2.b41f1cb0.chunk.js.LICENSE.txt": "/pay-go/static/js/2.b41f1cb0.chunk.js.LICENSE.txt"
+    "static/js/2.4fd07bd5.chunk.js.LICENSE.txt": "/pay-go/static/js/2.4fd07bd5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.96e5731b.js",
-    "static/js/2.b41f1cb0.chunk.js",
+    "static/js/2.4fd07bd5.chunk.js",
     "static/css/main.bab0b925.chunk.css",
-    "static/js/main.fb607d54.chunk.js"
+    "static/js/main.c8605c23.chunk.js"
   ]
 }
