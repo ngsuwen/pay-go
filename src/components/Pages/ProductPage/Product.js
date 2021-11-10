@@ -27,7 +27,7 @@ export default function ProductPage() {
 
     return (
         <Container maxWidth='lg'>
-            <Card sx={{ display: 'flex', justifyContent:'center', padding:'50px 50px 75px', boxShadow:'none' }}>
+            <Card sx={{ display: 'flex', justifyContent:'center', alignItems:'center', padding:'50px 50px 75px', boxShadow:'none' }}>
                 <CardMedia
                     component="img"
                     sx={{ width: 300, padding: 5 }}
