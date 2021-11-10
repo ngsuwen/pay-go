@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { IconButton, Box, Container, Card, CardContent, Typography, CardMedia } from '@mui/material';
 import QtySelector from "./QtySelector";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ImageZoom from "./ImageZoom";
 
 export default function ProductPage() {
     const params = useParams();
@@ -29,25 +30,25 @@ export default function ProductPage() {
 
     return (
         <Container maxWidth='lg'>
-            <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '50px 50px 75px', boxShadow: 'none' }}>
-                <CardMedia
-                    component="img"
-                    sx={{ width: 300, padding: 5 }}
-                    image={data.image}
-                    alt={data.title}
-                />
+            <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0px 50px 75px', boxShadow: 'none' }}>
+                <CardContent sx={{ padding: 10 }}>
+                    <ImageZoom image={data.image} />
+                </CardContent>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent>
                         <Typography sx={{ padding: 1 }} variant="h6" fontWeight='bold'>
                             {data.title}
                         </Typography>
-                        <Typography sx={{ padding: 1 }} variant="subtitle1" >
-                            {data.rating ? data.rating.rate : ''}/5 ({data.rating ? data.rating.count : ''})
+                        <Typography sx={{ padding: 1, fontStyle: 'italic' }} variant="subtitle1" color="text.secondary" >
+                            Rating: {data.rating ? data.rating.rate : ''}/5
                         </Typography>
                         <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary" >
+                            <Typography variant="subtitle2" fontWeight='bold'>
+                                DESCRIPTION:
+                            </Typography>
                             {data.description}
                         </Typography>
-                        <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
+                        <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary" fontWeight='bold'>
                             US ${data.price}
                         </Typography>
                         <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
