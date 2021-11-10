@@ -26,7 +26,7 @@ export default function ProductPage() {
     }, [params.category]);
 
     return (
-        <Container maxWidth='1000'>
+        <Container maxWidth='lg'>
             <Card sx={{ display: 'flex', justifyContent:'center', padding:10, boxShadow:'none' }}>
                 <CardMedia
                     component="img"

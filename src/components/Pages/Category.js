@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
-import Grid from '@mui/material/Grid';
+import { Grid, Container } from '@mui/material';
 import Products from '../ProductCard';
 
 export default function FetchData() {
     const params = useParams();
-    
+
     const [data, setData] = useState([]);
-    const products=data.map((element)=><Grid item><Products data={element}/></Grid>)
-    
+    const products = data.map((element) => <Grid item><Products data={element} /></Grid>)
+
     const fetchData = async () => {
         try {
             const response = await fetch(`https://fakestoreapi.com/products/category/${params.category}`);
@@ -29,12 +29,10 @@ export default function FetchData() {
     }, [params.category]);
 
     return (
-        <>
-        <div style={{minHeight: '62vh', maxWidth:1000, margin:'auto'}}>
-        <Grid sx={{justifyContent: 'center'}} container spacing={0.5} >
-            {products}
-        </Grid>
-        </div>
-        </>
+        <Container maxWidth='lg'>
+            <Grid sx={{ justifyContent: 'center' }} container spacing={0.5} >
+                {products}
+            </Grid>
+        </Container>
     );
 };

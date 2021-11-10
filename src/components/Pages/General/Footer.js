@@ -17,7 +17,6 @@ export default function Footer() {
       <div style={{ backgroundColor: '#eceff1', position: "static", padding: '0.5em' }} >
         <TableContainer sx={{ display: 'flex', justifyContent: "center" }}>
           <Table sx={{ maxWidth: 1000 }}>
-
             <TableRow>
               <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left', fontWeight: 'bold' }} width='20%' >COMPANY</TableCell>
               <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left', fontWeight: 'bold' }} width='25%' >PRODUCTS</TableCell>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import { Box, Card, CardContent, CardMedia, Typography, Grid, Button } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Typography, Grid, Button, Container } from '@mui/material';
 
 const CCard = ({ data }) => {
     console.log(data.image)
@@ -96,13 +96,13 @@ const Item = ({ num, arr }) => {
 export default function ProductCarousel() {
 
     return (
-        <div style={{ maxWidth: 1000, margin: 'auto' }}>
+        <Container maxWidth='lg'>
             <Carousel>
                 <Item num={0} arr={dataArray1} />
                 <Item num={1} arr={dataArray2} />
                 <Item num={2} arr={dataArray3} />
             </Carousel>
-        </div>
+        </Container>
     );
 }
 

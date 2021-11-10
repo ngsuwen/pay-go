@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Grid from '@mui/material/Grid';
+import { Grid, Container } from '@mui/material';
 import Products from '../../ProductCard';
 
-export default function FetchData({category}) {
+export default function FetchData({ category }) {
     const [data, setData] = useState([]);
-    const products=data.map((element)=><Grid item><Products data={element}/></Grid>)
-    
+    const products = data.map((element) => <Grid item><Products data={element} /></Grid>)
+
     const fetchData = async () => {
         try {
             const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
@@ -27,12 +27,10 @@ export default function FetchData({category}) {
 
 
     return (
-        <>
-        <div style={{maxWidth:1000, margin:'auto'}}>
-        <Grid sx={{justifyContent: 'center'}} container spacing={0.5} >
-            {products}
-        </Grid>
-        </div>
-        </>
+        <Container maxWidth='lg'>
+            <Grid sx={{ justifyContent: 'center' }} container spacing={0.5} >
+                {products}
+            </Grid>
+        </Container>
     );
 };
