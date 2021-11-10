@@ -51,10 +51,10 @@ export default function CustomizedTabs() {
                 centered
             >
                 <StyledTab label="HOME" link='/'/>
-                <StyledTab label="ELECTRONICS" link='electronics' />
-                <StyledTab label="JEWELLERY" link='jewelery'/>
-                <StyledTab label="MENS" link="men's%20clothing"/>
-                <StyledTab label="WOMENS" link="women's%20clothing"/>
+                <StyledTab label="ELECTRONICS" link='/category/electronics' />
+                <StyledTab label="JEWELLERY" link='/category/jewelery'/>
+                <StyledTab label="MENS" link="/category/men's%20clothing"/>
+                <StyledTab label="WOMENS" link="/category/women's%20clothing"/>
                 <StyledTab label="SIGN IN" />
                 <StyledTab label="CART" />
                 <StyledTab label="SEARCH" />
