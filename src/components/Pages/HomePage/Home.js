@@ -21,7 +21,7 @@ export default function Home() {
         </Box>
         <Products category="men's%20clothing"/>
         <Box sx={{ margin: 5, display: 'flex', justifyContent: 'center' }}>
-        <Heading>{"Products Selling"}</Heading>
+        <Heading>{"Top Selling"}</Heading>
         </Box>
         <Products category="men's%20clothing"/>
         </>

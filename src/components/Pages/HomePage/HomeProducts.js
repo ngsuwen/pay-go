@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Container } from '@mui/material';
-import Products from '../../ProductCard';
+import Product from '../../ProductCard';
 
 export default function FetchData({ category }) {
     const [data, setData] = useState([]);
-    const products = data.map((element) => <Grid item><Products data={element} /></Grid>)
+    const products = data.map((element) => <Grid item><Product data={element} /></Grid>)
 
     const fetchData = async () => {
         try {
