@@ -20,12 +20,8 @@ const StyledTabs = styled((props) => (
     }
 });
 
-const StyledTab = styled((props) => <Link style={{textDecoration:'none'}}to={`${props.link}`}><Tab disableRipple {...props} /></Link>)(
-    ({ theme }) => ({
+const StyledTab = styled((props) => <Link style={{textDecoration:'none'}}to={`${props.link}`}><Tab disableRipple {...props} /></Link>)({
         textTransform: 'none',
-        fontWeight: theme.typography.fontWeightRegular,
-        fontSize: theme.typography.pxToRem(13),
-        marginRight: theme.spacing(1),
         color: 'rgb(169,169,169)',
         '&.Mui-selected': {
             color: 'rgb(80,80,80)',
@@ -33,7 +29,7 @@ const StyledTab = styled((props) => <Link style={{textDecoration:'none'}}to={`${
         '&.Mui-focusVisible': {
             backgroundColor: 'rgba(100, 95, 228, 0.32)',
         },
-    }),
+    },
 );
 
 export default function CustomizedTabs() {
