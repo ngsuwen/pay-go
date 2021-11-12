@@ -1,9 +1,13 @@
-import React from 'react';
-import { List, Container, ListItem, Typography, Button, Grid, Divider, ListItemAvatar, ListItemText, IconButton } from '@mui/material';
+import React, { useContext } from 'react';
+import { List, Container, ListItem, Typography, Button, Grid, Divider } from '@mui/material';
 import CartItem from './CartItem';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { DataContext } from '../../../App'
+
 
 export default function Cart() {
+    const [cart, setCart] = useContext(DataContext);
+    const cartItemList = cart.map((item, index) =>
+        <CartItem data={item} key={index} />)
     return (
         <Container maxWidth='lg' sx={{ minHeight: '62vh' }}>
             <List
@@ -12,14 +16,10 @@ export default function Cart() {
                 }}
             >
                 <ListItem>
-                    <Typography sx={{paddingLeft:'20px', paddingBottom:'20px'}} variant='h6' fontWeight="bold" color="text.secondary">Products</Typography>
+                    <Typography sx={{ paddingLeft: '20px', paddingBottom: '20px' }} variant='h6' fontWeight="bold" color="text.secondary">Products</Typography>
                 </ListItem>
                 <Divider />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
+                {cartItemList}
                 <Divider />
                 <ListItem >
                     <Grid container direction="column" spacing={3} >

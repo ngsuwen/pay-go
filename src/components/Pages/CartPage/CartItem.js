@@ -6,13 +6,13 @@ export default function Cart({ data }) {
     return (
         <>
             <ListItem>
-                <ListItemAvatar sx={{ padding: '20px', flex: 2 }} >
-                    <img style={{width:'100%'}} src='https://mui.com/static/images/grid/complex.jpg' />
+                <ListItemAvatar sx={{ padding: '20px', flex:'0 200px' }} >
+                    <img style={{width:'100%'}} src={data.image} />
                 </ListItemAvatar>
-                <ListItemText sx={{ flexGrow: 2 }} primary="Name" secondary="Description" />
-                <Typography sx={{ flexGrow: 1 }} color="text.secondary">Quantity</Typography>
-                <Typography sx={{ flexGrow: 0.5 }} color="text.secondary">Cost</Typography>
-                <IconButton >
+                <ListItemText sx={{ paddingLeft: '20px', flex:'0 600px' }} primary={data.title} secondary="Description" />
+                <Typography sx={{ flex:'0 125px' }} color="text.secondary">Quantity</Typography>
+                <Typography sx={{ flexGrow: 1 }} color="text.secondary">US ${data.price}</Typography>
+                <IconButton sx={{ flex:'0 0 20px' }}>
                     <DeleteIcon />
                 </IconButton>
             </ListItem>
