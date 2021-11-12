@@ -52,7 +52,7 @@ export default function CustomizedTabs() {
                 <StyledTab label="MENS" link="/category/men's%20clothing"/>
                 <StyledTab label="WOMENS" link="/category/women's%20clothing"/>
                 <StyledTab label="SIGN IN" />
-                <StyledTab label="CART" />
+                <StyledTab label="CART" link="/cart"/>
                 <StyledTab label="SEARCH" />
             </StyledTabs>
         </Box>
