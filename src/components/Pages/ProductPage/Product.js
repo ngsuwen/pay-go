@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from 'react-router-dom'
 import { IconButton, Box, Container, Card, CardContent, Typography, CardMedia } from '@mui/material';
 import QtySelector from "./QtySelector";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ImageZoom from "./ImageZoom";
+import { DataContext } from '../../../App'
 
 export default function ProductPage() {
     const params = useParams();
     const [data, setData] = useState([]);
+    const [cart, setCart] = useContext(DataContext);
 
     const fetchData = async () => {
         try {
@@ -19,6 +21,10 @@ export default function ProductPage() {
             console.log(err);
         }
     };
+
+    const addToCart =()=>{
+        setCart([...cart, data])
+    }
 
     useEffect(() => {
         const getData = async () => {
@@ -56,7 +62,7 @@ export default function ProductPage() {
                         </Typography>
                         <QtySelector />
                         <IconButton aria-label="add to shopping cart">
-                            <AddShoppingCartIcon />
+                            <AddShoppingCartIcon onClick={addToCart}/>
                         </IconButton>
                     </CardContent>
                 </Box>
