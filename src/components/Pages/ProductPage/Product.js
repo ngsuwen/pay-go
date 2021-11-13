@@ -31,16 +31,16 @@ export default function ProductPage() {
             if (qtyRef.current.value === '') {
                 data.quantity = 1
             } else {
-                data.quantity = qtyRef.current.value
+                data.quantity = Number(qtyRef.current.value)
             }
             setCart([...cart, data])
         } else {
             if (qtyRef.current.value === '') {
                 cart[index].quantity+=1
-                setCart(cart)
+                setCart([...cart])
             } else {
                 cart[index].quantity+=Number(qtyRef.current.value)
-                setCart(cart)
+                setCart([...cart])
             }
         }
         setAlert(true)
@@ -91,7 +91,7 @@ export default function ProductPage() {
                     </CardContent>
                 </Box>
             </Card>
-            <Snackbar anchorOrigin={{ vertical: "bottom", horizontal: "center" }} open={alert} autoHideDuration={5000} onClose={handleClose}>
+            <Snackbar anchorOrigin={{ vertical: "bottom", horizontal: "center" }} open={alert} autoHideDuration={1000} onClose={handleClose}>
                 <Alert onClose={handleClose} variant="filled" severity="success" sx={{ width: '100%' }}>
                     Added to cart!
                 </Alert>
