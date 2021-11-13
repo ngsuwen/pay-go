@@ -42,8 +42,8 @@ export default function CustomizedTabs({ cart }) {
         setValue(newValue);
     };
 
-    let totalCart=0
-    const calTotalCart=()=> cart.forEach(item => totalCart+=item.quantity)
+    let totalCart = 0
+    const calTotalCart = () => cart.forEach(item => totalCart += item.quantity)
     calTotalCart()
 
     return (
@@ -53,9 +53,11 @@ export default function CustomizedTabs({ cart }) {
                     <IconButton>
                         <SearchIcon />
                     </IconButton>
-                    <IconButton>
-                        <PersonIcon />
-                    </IconButton>
+                    <Link to="/login">
+                        <IconButton>
+                            <PersonIcon />
+                        </IconButton>
+                    </Link>
                     <Link to="/cart">
                         <IconButton>
                             <Badge badgeContent={totalCart} color="default">
