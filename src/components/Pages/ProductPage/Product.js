@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { useParams } from 'react-router-dom'
-import { IconButton, Box, Container, Card, CardContent, Typography, CardMedia } from '@mui/material';
+import { Alert, Snackbar, IconButton, Box, Container, Card, CardContent, Typography, CardMedia } from '@mui/material';
 import QtySelector from "./QtySelector";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ImageZoom from "./ImageZoom";
 import { DataContext } from '../../../App'
 
+
 export default function ProductPage() {
     const params = useParams();
     const [data, setData] = useState([]);
     const [cart, setCart] = useContext(DataContext);
+    const [alert, setAlert] = useState(false);
     const qtyRef = useRef();
 
     const fetchData = async () => {
@@ -23,14 +25,30 @@ export default function ProductPage() {
         }
     };
 
-    const addToCart =()=>{
-        if (qtyRef.current.value===''){
-            data.quantity = 1
+    const addToCart = () => {
+        const index = cart.findIndex((element)=>element.title===data.title)
+        if (index === -1) {
+            if (qtyRef.current.value === '') {
+                data.quantity = 1
+            } else {
+                data.quantity = qtyRef.current.value
+            }
+            setCart([...cart, data])
         } else {
-            data.quantity = qtyRef.current.value
+            if (qtyRef.current.value === '') {
+                cart[index].quantity+=1
+                setCart(cart)
+            } else {
+                cart[index].quantity+=Number(qtyRef.current.value)
+                setCart(cart)
+            }
         }
-        setCart([...cart, data])
+        setAlert(true)
     }
+
+    const handleClose = () => {
+        setAlert(false)
+    };
 
     useEffect(() => {
         const getData = async () => {
@@ -66,13 +84,18 @@ export default function ProductPage() {
                         <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
                             Quantity:<br />
                         </Typography>
-                        <QtySelector qtyRef={qtyRef}/>
+                        <QtySelector qtyRef={qtyRef} />
                         <IconButton aria-label="add to shopping cart">
-                            <AddShoppingCartIcon onClick={addToCart}/>
+                            <AddShoppingCartIcon onClick={addToCart} />
                         </IconButton>
                     </CardContent>
                 </Box>
             </Card>
+            <Snackbar anchorOrigin={{ vertical: "bottom", horizontal: "center" }} open={alert} autoHideDuration={5000} onClose={handleClose}>
+                <Alert onClose={handleClose} variant="filled" severity="success" sx={{ width: '100%' }}>
+                    Added to cart!
+                </Alert>
+            </Snackbar>
         </Container >
     );
 };
