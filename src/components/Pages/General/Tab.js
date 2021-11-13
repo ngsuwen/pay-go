@@ -1,5 +1,5 @@
-import React from 'react';
-import { styled, Tabs, Tab, Box, Container, IconButton, Badge } from '@mui/material';
+import React, { useState } from 'react';
+import { styled, Tabs, Tab, Box, Container, ClickAwayListener, IconButton, Input, Badge } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import SearchIcon from '@mui/icons-material/Search';
@@ -36,7 +36,8 @@ const StyledTab = styled((props) => <Link style={{ textDecoration: 'none' }} to=
 );
 
 export default function CustomizedTabs({ cart }) {
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
+    const [search, setSearch] = useState(false);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -46,13 +47,35 @@ export default function CustomizedTabs({ cart }) {
     const calTotalCart = () => cart.forEach(item => totalCart += item.quantity)
     calTotalCart()
 
+    const setSearchHandler = () => {
+        setSearch(true)
+    }
+
+    const searchHandler = () => {
+        setSearch(false)
+    }
+
+    const handleClickAway=()=>{
+        setSearch(false)
+    }
+
     return (
         <Container maxWidth='lg'>
             <Box sx={{ marginBottom: 5 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <IconButton>
-                        <SearchIcon />
-                    </IconButton>
+                    {search ?
+                        <>
+                            <IconButton>
+                                <SearchIcon onClick={searchHandler} />
+                            </IconButton>
+                            <ClickAwayListener onClickAway={handleClickAway}>
+                                <Input sx={{fontSize:14}} placeholder="Search"/>
+                            </ClickAwayListener>
+                        </>
+                        :
+                        <IconButton>
+                            <SearchIcon onClick={setSearchHandler} />
+                        </IconButton>}
                     <Link to="/login">
                         <IconButton>
                             <PersonIcon />
