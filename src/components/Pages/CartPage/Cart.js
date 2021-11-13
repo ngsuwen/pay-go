@@ -8,6 +8,9 @@ export default function Cart() {
     const [cart, setCart] = useContext(DataContext);
     const cartItemList = cart.map((item, index) =>
         <CartItem data={item} key={index} />)
+    let totalCost=0
+    const calTotalCost=()=> cart.forEach(item => totalCost+=item.quantity*item.price)
+    calTotalCost()
     return (
         <Container maxWidth='lg' sx={{ minHeight: '62vh' }}>
             <List
@@ -25,7 +28,7 @@ export default function Cart() {
                     <Grid container direction="column" spacing={3} >
                         <Grid item />
                         <Grid item style={{ display: "flex", justifyContent: "flex-end" }}>
-                            <Typography fontWeight='bold' color="text.secondary">Total Cost: $$$</Typography>
+                            <Typography fontWeight='bold' color="text.secondary">Total Cost: US ${totalCost}</Typography>
                         </Grid><Grid item style={{ display: "flex", justifyContent: "flex-end" }}>
                             <Button sx={{ color: "text.secondary", fontSize: 12 }} variant="outlined" color='inherit'>Check out</Button>
                         </Grid>
