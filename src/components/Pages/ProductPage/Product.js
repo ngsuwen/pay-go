@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { useParams } from 'react-router-dom'
 import { IconButton, Box, Container, Card, CardContent, Typography, CardMedia } from '@mui/material';
 import QtySelector from "./QtySelector";
@@ -10,6 +10,7 @@ export default function ProductPage() {
     const params = useParams();
     const [data, setData] = useState([]);
     const [cart, setCart] = useContext(DataContext);
+    const qtyRef = useRef();
 
     const fetchData = async () => {
         try {
@@ -23,6 +24,11 @@ export default function ProductPage() {
     };
 
     const addToCart =()=>{
+        if (qtyRef.current.value===''){
+            data.quantity = 1
+        } else {
+            data.quantity = qtyRef.current.value
+        }
         setCart([...cart, data])
     }
 
@@ -60,7 +66,7 @@ export default function ProductPage() {
                         <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
                             Quantity:<br />
                         </Typography>
-                        <QtySelector />
+                        <QtySelector qtyRef={qtyRef}/>
                         <IconButton aria-label="add to shopping cart">
                             <AddShoppingCartIcon onClick={addToCart}/>
                         </IconButton>

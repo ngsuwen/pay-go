@@ -18,7 +18,7 @@ export default function Cart({ data }) {
                     <img style={{width:'100%'}} src={data.image} />
                 </ListItemAvatar>
                 <ListItemText sx={{ paddingLeft: '20px', flex:'0 600px' }} primary={data.title} secondary="Description" />
-                <Typography sx={{ flex:'0 125px' }} color="text.secondary">Quantity</Typography>
+                <Typography sx={{ flex:'0 125px' }} color="text.secondary">{data.quantity}</Typography>
                 <Typography sx={{ flexGrow: 1 }} color="text.secondary">US ${data.price}</Typography>
                 <IconButton sx={{ flex:'0 0 20px' }}>
                     <DeleteIcon onClick={deleteHandler}/>
