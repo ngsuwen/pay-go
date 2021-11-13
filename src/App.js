@@ -4,6 +4,7 @@ import Category from './components/Pages/CategoryPage/Category';
 import Product from './components/Pages/ProductPage/Product'
 import Cart from "./components/Pages/CartPage/Cart";
 import Login from "./components/Pages/LoginPage/Login";
+import Search from "./components/Pages/SearchResult/SearchResult";
 import Header from './components/Pages/General/Header';
 import Tabs from './components/Pages/General/Tab';
 import Footer from './components/Pages/General/Footer';
@@ -30,6 +31,7 @@ function App() {
             <Route path='/category/:category/:id' element={<Product />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/search/:term' element={<Search />} />
             <Route path='/*' element={<Navigate to='/' />} />
           </Routes>
         </DataContext.Provider>
