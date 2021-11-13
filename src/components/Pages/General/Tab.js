@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { styled, Tabs, Tab, Box, Container, ClickAwayListener, IconButton, Input, Badge } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
@@ -36,8 +36,10 @@ const StyledTab = styled((props) => <Link style={{ textDecoration: 'none' }} to=
 );
 
 export default function CustomizedTabs({ cart }) {
+    const searchRef = useRef();
     const [value, setValue] = useState(0);
     const [search, setSearch] = useState(false);
+    const [searchValue, setSearchValue] = useState(false);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -52,11 +54,16 @@ export default function CustomizedTabs({ cart }) {
     }
 
     const searchHandler = () => {
+
         setSearch(false)
     }
 
-    const handleClickAway=()=>{
+    const handleClickAway = () => {
         setSearch(false)
+    }
+
+    const searchChangeHandler = () => {
+        setSearchValue(searchRef.current.value)
     }
 
     return (
@@ -65,11 +72,13 @@ export default function CustomizedTabs({ cart }) {
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                     {search ?
                         <>
-                            <IconButton>
-                                <SearchIcon onClick={searchHandler} />
-                            </IconButton>
+                            <Link to={`/search/${searchValue ? searchValue : ''}`}>
+                                <IconButton>
+                                    <SearchIcon onClick={searchHandler} />
+                                </IconButton>
+                            </Link>
                             <ClickAwayListener onClickAway={handleClickAway}>
-                                <Input sx={{fontSize:14}} placeholder="Search"/>
+                                <Input sx={{ fontSize: 14 }} placeholder="Search" inputRef={searchRef} onChange={searchChangeHandler} />
                             </ClickAwayListener>
                         </>
                         :
