@@ -80,7 +80,7 @@ export default function ProductPage() {
                             {data.description}
                         </Typography>
                         <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary" fontWeight='bold'>
-                            {currency?currency.toUpperCase():'USD'} {data.price}
+                            {currency?currency.toUpperCase():'USD $'}{data.price}
                         </Typography>
                         <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
                             Quantity:<br />
