@@ -12,9 +12,12 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { createContext, useState } from 'react';
 
 export const DataContext = createContext();
+export const CurrencyContext = createContext();
 
 function App() {
-  const [cart, setCart] = useState([])
+  const [currency, setCurrency] = useState('');
+  const [cart, setCart] = useState([]);
+
   return (
     <>
       <nav>
@@ -25,15 +28,17 @@ function App() {
       </nav>
       <main>
         <DataContext.Provider value={[cart, setCart]}>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/category/:category' element={<Category />} />
-            <Route path='/category/:category/:id' element={<Product />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/search/:term' element={<Search />} />
-            <Route path='/*' element={<Navigate to='/' />} />
-          </Routes>
+          <CurrencyContext.Provider value={[currency, setCurrency]}>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/category/:category' element={<Category />} />
+              <Route path='/category/:category/:id' element={<Product />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/search/:term' element={<Search />} />
+              <Route path='/*' element={<Navigate to='/' />} />
+            </Routes>
+          </CurrencyContext.Provider>
         </DataContext.Provider>
       </main>
       <Footer />

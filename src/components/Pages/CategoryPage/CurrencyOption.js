@@ -7,10 +7,10 @@ const crypto = ['btc','eth','ltc']
 const traditionalOp = traditional.map((currency)=><MenuItem value={currency}><Typography variant="body2" color="textSecondary">{currency}</Typography></MenuItem>)
 const cryptoOp = crypto.map((currency)=><MenuItem value={currency}><Typography variant="body2" color="textSecondary">{currency}</Typography></MenuItem>)
 
-export default function SortOption({sort, setSort}) {
+export default function CurrencyOption({currency, setCurrency}) {
 
     const handleChange = (event) => {
-        setSort(event.target.value);
+        setCurrency(event.target.value);
     };
 
     return (
@@ -18,7 +18,7 @@ export default function SortOption({sort, setSort}) {
                 <FormControl variant="standard" sx={{ m: 1, minWidth: 100 }}>
                     <InputLabel><Typography variant="body2" color="textSecondary">Currency:</Typography></InputLabel>
                     <Select
-                        value={sort}
+                        value={currency}
                         onChange={handleChange}
                     >
                         <MenuItem value="">

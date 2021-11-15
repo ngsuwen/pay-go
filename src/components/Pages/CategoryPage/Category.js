@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from 'react-router-dom'
 import { Grid, Container, Box } from '@mui/material';
 import Product from '../../ProductCard';
 import SortOption from './SortOption';
 import CurrencyOption from './CurrencyOption';
-import { sortFunction } from './sortFunction'
+import { sortFunction } from './sortFunction';
+import { CurrencyContext } from "../../../App";
 
 export default function FetchData() {
-    const [sort, setSort] = React.useState('');
+    const [sort, setSort] = useState('');
+    const [currency, setCurrency] = useContext(CurrencyContext);
     const params = useParams();
 
     const [data, setData] = useState([]);
@@ -33,13 +35,13 @@ export default function FetchData() {
             setData(response);
         };
         getData();
-    }, [params.category, sort]);
+    }, [params.category, sort, currency]);
 
     return (
         <Container maxWidth='lg' sx={{ minHeight: '62vh' }}>
             <Box sx={{ maxWidth: 'lg', display: 'flex', justifyContent: 'flex-end' }}>
                 <SortOption sort={sort} setSort={setSort} />
-                <CurrencyOption />
+                <CurrencyOption currency={currency} setCurrency={setCurrency}/>
             </Box>
             <Grid sx={{ justifyContent: 'center' }} container spacing={0.5} >
                 {products}
