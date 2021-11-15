@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
-import { Grid, Container } from '@mui/material';
+import { Grid, Container, Box } from '@mui/material';
 import Product from '../../ProductCard';
-import SortOption from '../CategoryPage/SortOption'
+import SortOption from '../CategoryPage/SortOption';
+import CurrencyOption from '../CategoryPage/CurrencyOption';
 import { sortFunction } from '../CategoryPage/sortFunction'
 
 export default function FetchData() {
@@ -37,7 +38,10 @@ export default function FetchData() {
 
     return (
         <Container maxWidth='lg' sx={{minHeight:'62vh'}}>
-            <SortOption sort={sort} setSort={setSort}/>
+            <Box sx={{ maxWidth: 'lg', display: 'flex', justifyContent: 'flex-end' }}>
+                <SortOption sort={sort} setSort={setSort} />
+                <CurrencyOption />
+            </Box>
             <Grid sx={{ justifyContent: 'center' }} container spacing={0.5} >
                 {products}
             </Grid>
