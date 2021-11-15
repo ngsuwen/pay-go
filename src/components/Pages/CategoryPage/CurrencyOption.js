@@ -4,7 +4,7 @@ import { Typography, Select, FormControl, MenuItem, InputLabel, Box } from '@mui
 const traditional = ['eur','sgd','usd']
 const crypto = ['btc','eth','ltc']
 
-const traditionalOp = traditional.map((currency)=><MenuItem value={currency}><Typography variant="body2" color="textSecondary">{currency}</Typography></MenuItem>)
+const traditionalOp = traditional.map((currency)=><MenuItem value={`${currency} $`}><Typography variant="body2" color="textSecondary">{currency}</Typography></MenuItem>)
 const cryptoOp = crypto.map((currency)=><MenuItem value={currency}><Typography variant="body2" color="textSecondary">{currency}</Typography></MenuItem>)
 
 export default function CurrencyOption({currency, setCurrency}) {

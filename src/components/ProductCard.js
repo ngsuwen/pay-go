@@ -45,7 +45,7 @@ export default function ProductCard({ data }) {
                             {data.title}
                         </Typography>
                         <Typography textAlign='center' variant="subtitle2" color="text.secondary">
-                            {currency?currency.toUpperCase():'USD'} {data.price}
+                            {currency?currency.toUpperCase():'USD $'}{data.price}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
