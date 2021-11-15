@@ -46,7 +46,7 @@ export default function ProductCard({ data }) {
                             {data.title}
                         </Typography>
                         <Typography textAlign='center' variant="subtitle2" color="text.secondary">
-                            {currency?currency.toUpperCase():'USD $'}{Number(data.price*rate).toFixed(2)}
+                            {currency?currency.toUpperCase():'USD $'}{rate?Number(data.price*rate).toFixed(2):Number(data.price).toFixed(2)}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
