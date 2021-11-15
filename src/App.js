@@ -13,9 +13,11 @@ import { createContext, useState } from 'react';
 
 export const DataContext = createContext();
 export const CurrencyContext = createContext();
+export const RateContext = createContext();
 
 function App() {
   const [currency, setCurrency] = useState('');
+  const [rate, setRate] = useState('');
   const [cart, setCart] = useState([]);
 
   return (
@@ -29,6 +31,7 @@ function App() {
       <main>
         <DataContext.Provider value={[cart, setCart]}>
           <CurrencyContext.Provider value={[currency, setCurrency]}>
+          <RateContext.Provider value={[rate, setRate]}>
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/category/:category' element={<Category />} />
@@ -38,6 +41,7 @@ function App() {
               <Route path='/search/:term' element={<Search />} />
               <Route path='/*' element={<Navigate to='/' />} />
             </Routes>
+            </RateContext.Provider>
           </CurrencyContext.Provider>
         </DataContext.Provider>
       </main>
