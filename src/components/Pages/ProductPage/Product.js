@@ -5,12 +5,13 @@ import QtySelector from "./QtySelector";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ImageZoom from "./ImageZoom";
 import { DataContext } from '../../../App'
-
+import { CurrencyContext } from "../../../App";
 
 export default function ProductPage() {
     const params = useParams();
     const [data, setData] = useState([]);
     const [cart, setCart] = useContext(DataContext);
+    const [currency, setCurrency] = useContext(CurrencyContext);
     const [alert, setAlert] = useState(false);
     const qtyRef = useRef();
 
@@ -79,7 +80,7 @@ export default function ProductPage() {
                             {data.description}
                         </Typography>
                         <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary" fontWeight='bold'>
-                            US ${data.price}
+                            {currency?currency.toUpperCase():'USD'} {data.price}
                         </Typography>
                         <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
                             Quantity:<br />

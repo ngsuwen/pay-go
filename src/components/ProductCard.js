@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, CardContent, CardMedia, CardActionArea, Typography, Box } from '@mui/material';
 import { Link } from "react-router-dom"
+import { CurrencyContext } from "../App";
 
 export default function ProductCard({ data }) {
+    const [currency, setCurrency] = useContext(CurrencyContext);
+
     return (
         <Link style={{textDecoration:'none'}} to={`/category/${data.category}/${data.id}`}>
             <Card style={{
@@ -42,7 +45,7 @@ export default function ProductCard({ data }) {
                             {data.title}
                         </Typography>
                         <Typography textAlign='center' variant="subtitle2" color="text.secondary">
-                            US$ {data.price}
+                            {currency?currency.toUpperCase():'USD'} {data.price}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
