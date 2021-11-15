@@ -4,8 +4,7 @@ import { Alert, Snackbar, IconButton, Box, Container, Card, CardContent, Typogra
 import QtySelector from "./QtySelector";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ImageZoom from "./ImageZoom";
-import { DataContext } from '../../../App'
-import { CurrencyContext } from "../../../App";
+import { DataContext, CurrencyContext, RateContext } from "../../../App";
 
 export default function ProductPage() {
     const params = useParams();
@@ -14,6 +13,7 @@ export default function ProductPage() {
     const [currency, setCurrency] = useContext(CurrencyContext);
     const [alert, setAlert] = useState(false);
     const qtyRef = useRef();
+    const [rate, setRate] = useContext(RateContext);
 
     const fetchData = async () => {
         try {
@@ -80,7 +80,7 @@ export default function ProductPage() {
                             {data.description}
                         </Typography>
                         <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary" fontWeight='bold'>
-                            {currency?currency.toUpperCase():'USD $'}{data.price}
+                            {currency?currency.toUpperCase():'USD $'}{Number(data.price*rate).toFixed(2)}
                         </Typography>
                         <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
                             Quantity:<br />

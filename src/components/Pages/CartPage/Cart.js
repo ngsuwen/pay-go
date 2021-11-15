@@ -1,15 +1,18 @@
 import React, { useContext } from 'react';
 import { List, Container, ListItem, Typography, Button, Grid, Divider } from '@mui/material';
 import CartItem from './CartItem';
-import { DataContext } from '../../../App'
+import { DataContext, CurrencyContext , RateContext } from '../../../App'
 
 
 export default function Cart() {
     const [cart, setCart] = useContext(DataContext);
+    const [rate, setRate] = useContext(RateContext);
+    const [currency, setCurrency] = useContext(CurrencyContext);
+
     const cartItemList = cart.map((item, index) =>
         <CartItem data={item} key={index} />)
     let totalCost=0
-    const calTotalCost=()=> cart.forEach(item => totalCost+=item.quantity*item.price)
+    const calTotalCost=()=> cart.forEach(item => totalCost+=item.quantity*item.price*rate)
     calTotalCost()
     return (
         <Container maxWidth='lg' sx={{ minHeight: '62vh' }}>
@@ -28,7 +31,7 @@ export default function Cart() {
                     <Grid container direction="column" spacing={3} >
                         <Grid item />
                         <Grid item style={{ display: "flex", justifyContent: "flex-end" }}>
-                            <Typography fontWeight='bold' color="text.secondary">Total Cost: US ${totalCost}</Typography>
+                            <Typography fontWeight='bold' color="text.secondary">Total Cost: {currency?currency.toUpperCase():'USD $'}{Number(totalCost).toFixed(2)}</Typography>
                         </Grid><Grid item style={{ display: "flex", justifyContent: "flex-end" }}>
                             <Button sx={{ color: "text.secondary", fontSize: 12 }} variant="outlined" color='inherit'>Check out</Button>
                         </Grid>

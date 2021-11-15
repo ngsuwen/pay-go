@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Typography, Select, FormControl, MenuItem, InputLabel, Box } from '@mui/material';
+import { RateContext } from '../../../App';
 
 const traditional = ['eur','sgd','usd']
 const crypto = ['btc','eth','ltc']
 
 const traditionalOp = traditional.map((currency)=><MenuItem value={`${currency} $`}><Typography variant="body2" color="textSecondary">{currency}</Typography></MenuItem>)
-const cryptoOp = crypto.map((currency)=><MenuItem value={currency}><Typography variant="body2" color="textSecondary">{currency}</Typography></MenuItem>)
+const cryptoOp = crypto.map((currency)=><MenuItem value={`${currency} `}><Typography variant="body2" color="textSecondary">{currency}</Typography></MenuItem>)
+
+async function currencyApi(currency){
+    const response = await fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json');
+    const data = await response.json()
+    return data.usd[currency]
+}
 
 export default function CurrencyOption({currency, setCurrency}) {
-
-    const handleChange = (event) => {
+    const [rate, setRate] = useContext(RateContext)
+    
+    async function handleChange(event){
         setCurrency(event.target.value);
+        const currencyInput = event.target.value.substring(0,3)
+        const getRate = await currencyApi(currencyInput)
+        setRate(getRate)
     };
 
     return (
