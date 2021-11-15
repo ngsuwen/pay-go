@@ -16,17 +16,16 @@ An e-commerce mock up
 ## Accomplishments
 * Header, Tabs, Footer 
 * Home page - Carousell, Product list 
-```
 * Categories page
 * Product information page
 * Cart function - Add to cart, view cart, remove from cart 
 * Search bar
-* User login page
-* show in different currency
+* Show in different currency
 
-Bonus
-* have users to choose to show in normal currency or crypto
-```
+## To do
+* User login page
+* Clean up code
 
 ## Difficulties Faced
 * Took some time to get used to using Material UI - customizing css / themes
+* Efficiency of code
