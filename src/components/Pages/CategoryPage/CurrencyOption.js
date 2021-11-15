@@ -3,7 +3,7 @@ import { Typography, Select, FormControl, MenuItem, InputLabel, Box } from '@mui
 import { RateContext } from '../../../App';
 
 const traditional = ['eur','sgd','usd']
-const crypto = ['btc','eth','ltc']
+const crypto = ['doge','etc','ltc']
 
 const traditionalOp = traditional.map((currency)=><MenuItem value={`${currency} $`}><Typography variant="body2" color="textSecondary">{currency}</Typography></MenuItem>)
 const cryptoOp = crypto.map((currency)=><MenuItem value={`${currency} `}><Typography variant="body2" color="textSecondary">{currency}</Typography></MenuItem>)
@@ -19,8 +19,9 @@ export default function CurrencyOption({currency, setCurrency}) {
     
     async function handleChange(event){
         setCurrency(event.target.value);
-        const currencyInput = event.target.value.substring(0,3)
-        const getRate = await currencyApi(currencyInput)
+        // assuming currencies have <=4 letters
+        const currencyInput = event.target.value.substring(0,4)
+        const getRate = await currencyApi(currencyInput.replace(/\s+/g, ''))
         setRate(getRate)
     };
 
