@@ -12,7 +12,7 @@ export default function Cart() {
     const cartItemList = cart.map((item, index) =>
         <CartItem data={item} key={index} />)
     let totalCost=0
-    const calTotalCost=()=> cart.forEach(item => totalCost+=item.quantity*item.price*rate)
+    const calTotalCost=()=> cart.forEach(item => totalCost+=item.quantity*item.price*(rate?rate:1))
     calTotalCost()
     return (
         <Container maxWidth='lg' sx={{ minHeight: '62vh' }}>

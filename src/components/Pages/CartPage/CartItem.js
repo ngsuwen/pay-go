@@ -21,7 +21,7 @@ export default function Cart({ data }) {
                 </ListItemAvatar>
                 <ListItemText sx={{ paddingLeft: '20px', flex:'0 600px' }} primary={data.title} secondary="Description" />
                 <Typography sx={{ flex:'0 125px' }} color="text.secondary">{data.quantity}</Typography>
-                <Typography sx={{ flexGrow: 1 }} color="text.secondary">{currency?currency.toUpperCase():'USD $'}{Number(data.price*rate).toFixed(2)}</Typography>
+                <Typography sx={{ flexGrow: 1 }} color="text.secondary">{currency?currency.toUpperCase():'USD $'}{rate?Number(data.price*rate).toFixed(2):Number(data.price).toFixed(2)}</Typography>
                 <IconButton sx={{ flex:'0 0 20px' }}>
                     <DeleteIcon onClick={deleteHandler}/>
                 </IconButton>
