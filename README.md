@@ -24,6 +24,7 @@ An e-commerce mock up
 
 ## To do
 * User login page
+* Misc (about us, faq etc)
 * Clean up code
 
 ## Difficulties Faced
