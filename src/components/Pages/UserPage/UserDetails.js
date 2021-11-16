@@ -65,6 +65,12 @@ export default function FetchData() {
                             <Grid item xs={8}>
                                 <Typography variant='subtitle1' color="text.secondary">{data.address.zipcode}</Typography>
                             </Grid>
+                            <Grid item xs={4}>
+                                <Typography variant='subtitle1' color="text.secondary">Phone:</Typography>
+                            </Grid>
+                            <Grid item xs={8}>
+                                <Typography variant='subtitle1' color="text.secondary">{data.phone}</Typography>
+                            </Grid>
                         </Grid>
                     </>
                     : 'Loading'}
