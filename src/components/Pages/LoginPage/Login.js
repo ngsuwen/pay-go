@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button, TextField, Typography, Box, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { loginAuth } from './LoginAuth'
 
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
+    const userLogin = useRef();
+    const userPassword = useRef();
 
     const handleClickShowPassword = () => {
         setShowPassword(showPassword ? false : true)
     };
+
+    async function loginButtonHandler() {
+        const token = await loginAuth(userLogin.current.value, userPassword.current.value)
+        console.log(token?'success':'error')
+    }
 
     return (
         <Box sx={{ minHeight: '62vh', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
@@ -18,14 +26,15 @@ export default function Login() {
                 </Typography>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <TextField sx={{ width: 500 }} label="User Login" variant="outlined" />
+                <TextField sx={{ width: 500 }} label="User Login" variant="outlined" inputRef={userLogin} />
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 3 }}>
                 <FormControl sx={{ m: 1, width: 500 }} variant="outlined">
-                    <InputLabel>
+                    <InputLabel >
                         Password
                     </InputLabel>
                     <OutlinedInput
+                        inputRef={userPassword}
                         type={showPassword ? 'text' : 'password'}
                         endAdornment={
                             <InputAdornment position="end">
@@ -48,7 +57,7 @@ export default function Login() {
                         backgroundColor: "#757575"
                     }
                 }}
-                    variant="contained" disableElevation>Sign In</Button>
+                    variant="contained" disableElevation onClick={loginButtonHandler}>Sign In</Button>
             </Box>
         </Box>
     )
