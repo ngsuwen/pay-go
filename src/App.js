@@ -42,8 +42,7 @@ function App() {
                   <Route path='/category/:category/:id' element={<Product />} />
                   <Route path='/cart' element={<Cart />} />
                   <Route path='/login' element={<Login />} />
-                  <Route path='/user' element={<UserDetails />} />
-                  {/* {userId ? <UserDetails /> : <Nagivate to='/login' />} */}
+                  <Route path='/user' element={userId ? <UserDetails /> : <Navigate to='/login' />} />
                   <Route path='/search/:term' element={<Search />} />
                   <Route path='/*' element={<Navigate to='/' />} />
                 </Routes>

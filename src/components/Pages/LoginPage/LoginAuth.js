@@ -3,8 +3,8 @@ export async function loginAuth(user, password) {
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
-    "username": "mor_2314",
-    "password": "83r5^_"
+    "username": user,
+    "password": password
   });
 
   var requestOptions = {
@@ -17,7 +17,8 @@ export async function loginAuth(user, password) {
   try {
     const response = await fetch("https://fakestoreapi.com/auth/login", requestOptions)
     const data = await response.json();
-    return data.token
+    console.log(user)
+    return [data.token, user]
   } catch (err) {
     console.log(err)
   }
