@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
-import { styled, Tabs, Tab, Box, Container, ClickAwayListener, IconButton, Input, Badge } from '@mui/material';
+import React, { useState, useRef, useContext } from 'react';
+import { styled, Tabs, Tab, Box, Container, ClickAwayListener, IconButton, Input, Badge, Menu, MenuItem, Fade } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
-
+import { UserContext } from '../../../App';
 const StyledTabs = styled((props) => (
     <Tabs
         {...props}
@@ -40,6 +40,23 @@ export default function CustomizedTabs({ cart }) {
     const [value, setValue] = useState(0);
     const [search, setSearch] = useState(false);
     const [searchValue, setSearchValue] = useState(false);
+    const [userId, setUserId] = useContext(UserContext);
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleCloseLogout = () => {
+        setAnchorEl(null);
+        setUserId(null)
+    };
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -54,7 +71,6 @@ export default function CustomizedTabs({ cart }) {
     }
 
     const searchHandler = () => {
-
         setSearch(false)
     }
 
@@ -85,11 +101,21 @@ export default function CustomizedTabs({ cart }) {
                         <IconButton>
                             <SearchIcon onClick={setSearchHandler} />
                         </IconButton>}
-                    <Link to="/login">
-                        <IconButton>
-                            <PersonIcon />
-                        </IconButton>
-                    </Link>
+                    {userId ?
+                        <>
+                            <IconButton
+                                aria-controls="fade-menu"
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                                onClick={handleClick}>
+                                <PersonIcon />
+                            </IconButton>
+                        </> :
+                        <Link to="/login">
+                            <IconButton>
+                                <PersonIcon />
+                            </IconButton>
+                        </Link>}
                     <Link to="/cart">
                         <IconButton>
                             <Badge badgeContent={totalCart} color="default">
@@ -109,6 +135,22 @@ export default function CustomizedTabs({ cart }) {
                     <StyledTab label="WOMENS" link="/category/women's%20clothing" />
                 </StyledTabs>
             </Box>
+            <Menu
+                id="fade-menu"
+                MenuListProps={{
+                    'aria-labelledby': 'fade-button',
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Fade}
+            >
+                {userId ?
+                    <>
+                        <Link to="/user" style={{ textDecoration: 'none', color: 'rgb(80,80,80)' }}><MenuItem onClick={handleClose}>My Account</MenuItem></Link>
+                        <Link to="/login" style={{ textDecoration: 'none', color: 'rgb(80,80,80)' }}><MenuItem onClick={handleCloseLogout}>Logout</MenuItem></Link></> :
+                    ''}
+            </Menu>
         </Container>
     );
 }

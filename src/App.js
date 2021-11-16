@@ -26,6 +26,7 @@ function App() {
 
   return (
     <>
+      <UserContext.Provider value={[userId, setUserId]}>
       <nav>
         <Header />
         <Tabs cart={cart} />
@@ -36,7 +37,6 @@ function App() {
         <DataContext.Provider value={[cart, setCart]}>
           <CurrencyContext.Provider value={[currency, setCurrency]}>
             <RateContext.Provider value={[rate, setRate]}>
-              <UserContext.Provider value={[userId, setUserId]}>
                 <Routes>
                   <Route path='/' element={<Home />} />
                   <Route path='/category/:category' element={<Category />} />
@@ -48,11 +48,11 @@ function App() {
                   <Route path='/search/:term' element={<Search />} />
                   <Route path='/*' element={<Navigate to='/' />} />
                 </Routes>
-              </UserContext.Provider>
             </RateContext.Provider>
           </CurrencyContext.Provider>
         </DataContext.Provider>
       </main>
+      </UserContext.Provider>
       <Footer />
     </>
   );
