@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Grid, Divider, Container, Box, Typography } from '@mui/material';
+import { UserContext } from "../../../App";
 
 export default function FetchData() {
     const [data, setData] = useState()
+    const [userId, setUserId] = useContext(UserContext)
 
     const fetchData = async () => {
         try {
@@ -18,7 +20,8 @@ export default function FetchData() {
     useEffect(() => {
         const getData = async () => {
             const response = await fetchData();
-            setData(response[0])
+            const filter = response.filter((element, index)=>(element.username===userId))
+            setData(filter[0])
         };
         getData();
     }, []);
