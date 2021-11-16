@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Button, TextField, Typography, Box, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -25,9 +25,14 @@ export default function Login() {
 
     return (
         <Box sx={{ minHeight: '62vh', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'center', margin: 3 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', margin: 0 }}>
                 <Typography variant="h5" color="#757575">
                     Login
+                </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center', margin: 3 }}>
+                <Typography variant="body1" color="#C41E3A">
+                    *Invalid User Login
                 </Typography>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -57,7 +62,7 @@ export default function Login() {
                 </FormControl>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 5 }}>
-                <Link to={userId?'/user':'/login-invalid'} style={{textDecoration:'none'}}>
+                <Link to={userId?'/user':'/login'} style={{textDecoration:'none'}}>
                     <Button sx={{
                         backgroundColor: "#757575",
                         '&:hover': {

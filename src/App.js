@@ -4,6 +4,7 @@ import Category from './components/Pages/CategoryPage/Category';
 import Product from './components/Pages/ProductPage/Product'
 import Cart from "./components/Pages/CartPage/Cart";
 import Login from "./components/Pages/LoginPage/Login";
+import LoginError from "./components/Pages/LoginPage/LoginError"
 import Search from "./components/Pages/SearchResult/SearchResult";
 import UserDetails from "./components/Pages/UserPage/UserDetails";
 import Header from './components/Pages/General/Header';
@@ -42,6 +43,7 @@ function App() {
                   <Route path='/category/:category/:id' element={<Product />} />
                   <Route path='/cart' element={<Cart />} />
                   <Route path='/login' element={<Login />} />
+                  <Route path='/login-invalid' element={<LoginError />} />
                   <Route path='/user' element={userId ? <UserDetails /> : <Navigate to='/login' />} />
                   <Route path='/search/:term' element={<Search />} />
                   <Route path='/*' element={<Navigate to='/' />} />
