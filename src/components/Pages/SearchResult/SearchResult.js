@@ -5,11 +5,11 @@ import Product from '../../ProductCard';
 import SortOption from '../CategoryPage/SortOption';
 import CurrencyOption from '../CategoryPage/CurrencyOption';
 import { sortFunction } from '../CategoryPage/sortFunction'
-import { CurrencyContext } from "../../../App";
+import { CurrencyContext, SortContext } from "../../../App";
 
 export default function FetchData() {
     const [currency, setCurrency] = useContext(CurrencyContext);
-    const [sort, setSort] = useState('');
+    const [sort, setSort]=useContext(SortContext)
     const params = useParams();
     const [data, setData] = useState([]);
 
@@ -41,7 +41,7 @@ export default function FetchData() {
     return (
         <Container maxWidth='lg' sx={{minHeight:'62vh'}}>
             <Box sx={{ maxWidth: 'lg', display: 'flex', justifyContent: 'flex-end' }}>
-                <SortOption sort={sort} setSort={setSort} />
+                <SortOption/>
                 <CurrencyOption currency={currency} setCurrency={setCurrency}/>
             </Box>
             <Grid sx={{ justifyContent: 'center' }} container spacing={0.5} >

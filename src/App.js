@@ -17,9 +17,11 @@ export const DataContext = createContext();
 export const CurrencyContext = createContext();
 export const RateContext = createContext();
 export const UserContext = createContext();
+export const SortContext = createContext();
 
 function App() {
   const [currency, setCurrency] = useState('');
+  const [sort, setSort] = useState('');
   const [rate, setRate] = useState('');
   const [cart, setCart] = useState([]);
   const [userId, setUserId] = useState(null);
@@ -36,6 +38,7 @@ function App() {
       <main>
         <DataContext.Provider value={[cart, setCart]}>
           <CurrencyContext.Provider value={[currency, setCurrency]}>
+          <SortContext.Provider value={[sort, setSort]}>
             <RateContext.Provider value={[rate, setRate]}>
                 <Routes>
                   <Route path='/' element={<Home />} />
@@ -49,6 +52,7 @@ function App() {
                   <Route path='/*' element={<Navigate to='/' />} />
                 </Routes>
             </RateContext.Provider>
+            </SortContext.Provider>
           </CurrencyContext.Provider>
         </DataContext.Provider>
       </main>

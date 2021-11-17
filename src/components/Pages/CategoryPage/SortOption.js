@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Typography, Select, FormControl, MenuItem, InputLabel, Box } from '@mui/material';
+import { SortContext } from '../../../App';
 
-export default function SortOption({ sort, setSort }) {
-
+export default function SortOption() {
+    const [sort, setSort]=useContext(SortContext)
+    
     const handleChange = (event) => {
         setSort(event.target.value);
     };
