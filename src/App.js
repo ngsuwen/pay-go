@@ -8,6 +8,7 @@ import LoginError from "./components/Pages/LoginPage/LoginError"
 import Search from "./components/Pages/SearchResult/SearchResult";
 import UserDetails from "./components/Pages/UserPage/UserDetails";
 import Info from "./components/Pages/MiscPage/Info";
+import Error from "./components/Pages/MiscPage/Error"
 import Header from './components/Pages/General/Header';
 import Tabs from './components/Pages/General/Tab';
 import Footer from './components/Pages/General/Footer';
@@ -51,7 +52,8 @@ function App() {
                   <Route path='/user' element={userId ? <UserDetails /> : <Navigate to='/login' />} />
                   <Route path='/info' element={<Info />} />
                   <Route path='/search/:term' element={<Search />} />
-                  <Route path='/*' element={<Navigate to='/' />} />
+                  <Route path='/error' element={<Error />} />
+                  <Route path='/*' element={<Navigate to='/error' />} />
                 </Routes>
             </RateContext.Provider>
             </SortContext.Provider>
