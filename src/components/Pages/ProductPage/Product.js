@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { useParams } from 'react-router-dom'
-import { Alert, Snackbar, IconButton, Box, Container, Card, CardContent, Typography, CardMedia } from '@mui/material';
+import { Alert, Snackbar, IconButton, Box, Container, Card, CardContent, Typography, CircularProgress } from '@mui/material';
 import QtySelector from "./QtySelector";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ImageZoom from "./ImageZoom";
@@ -27,7 +27,7 @@ export default function ProductPage() {
     };
 
     const addToCart = () => {
-        const index = cart.findIndex((element)=>element.title===data.title)
+        const index = cart.findIndex((element) => element.title === data.title)
         if (index === -1) {
             if (qtyRef.current.value === '') {
                 data.quantity = 1
@@ -37,10 +37,10 @@ export default function ProductPage() {
             setCart([...cart, data])
         } else {
             if (qtyRef.current.value === '') {
-                cart[index].quantity+=1
+                cart[index].quantity += 1
                 setCart([...cart])
             } else {
-                cart[index].quantity+=Number(qtyRef.current.value)
+                cart[index].quantity += Number(qtyRef.current.value)
                 setCart([...cart])
             }
         }
@@ -62,35 +62,39 @@ export default function ProductPage() {
     return (
         <Container maxWidth='lg'>
             <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0px 50px 75px', boxShadow: 'none' }}>
-                <CardContent sx={{ padding: 10 }}>
-                    <ImageZoom image={data.image} />
-                </CardContent>
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <CardContent>
-                        <Typography sx={{ padding: 1 }} variant="h6" fontWeight='bold'>
-                            {data.title}
-                        </Typography>
-                        <Typography sx={{ padding: 1, fontStyle: 'italic' }} variant="subtitle1" color="text.secondary" >
-                            Rating: {data.rating ? data.rating.rate : ''}/5
-                        </Typography>
-                        <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary" >
-                            <Typography variant="subtitle2" fontWeight='bold'>
-                                DESCRIPTION:
-                            </Typography>
-                            {data.description}
-                        </Typography>
-                        <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary" fontWeight='bold'>
-                            {currency?currency.toUpperCase():'USD $'}{rate?Number(data.price*rate).toFixed(2):Number(data.price).toFixed(2)}
-                        </Typography>
-                        <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
-                            Quantity:<br />
-                        </Typography>
-                        <QtySelector qtyRef={qtyRef} />
-                        <IconButton aria-label="add to shopping cart">
-                            <AddShoppingCartIcon onClick={addToCart} />
-                        </IconButton>
-                    </CardContent>
-                </Box>
+                {data.image ?
+                    <>
+                        <CardContent sx={{ padding: 10 }}>
+                            <ImageZoom image={data.image} />
+                        </CardContent>
+                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                            <CardContent>
+                                <Typography sx={{ padding: 1 }} variant="h6" fontWeight='bold'>
+                                    {data.title}
+                                </Typography>
+                                <Typography sx={{ padding: 1, fontStyle: 'italic' }} variant="subtitle1" color="text.secondary" >
+                                    Rating: {data.rating ? data.rating.rate : ''}/5
+                                </Typography>
+                                <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary" >
+                                    <Typography variant="subtitle2" fontWeight='bold'>
+                                        DESCRIPTION:
+                                    </Typography>
+                                    {data.description}
+                                </Typography>
+                                <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary" fontWeight='bold'>
+                                    {currency ? currency.toUpperCase() : 'USD $'}{rate ? Number(data.price * rate).toFixed(2) : Number(data.price).toFixed(2)}
+                                </Typography>
+                                <Typography sx={{ padding: 1 }} variant="subtitle1" color="text.secondary">
+                                    Quantity:<br />
+                                </Typography>
+                                <QtySelector qtyRef={qtyRef} />
+                                <IconButton aria-label="add to shopping cart">
+                                    <AddShoppingCartIcon onClick={addToCart} />
+                                </IconButton>
+                            </CardContent>
+                        </Box>
+                    </>
+                    : <CircularProgress color="inherit" size='2rem' />}
             </Card>
             <Snackbar anchorOrigin={{ vertical: "bottom", horizontal: "center" }} open={alert} autoHideDuration={1000} onClose={handleClose}>
                 <Alert onClose={handleClose} variant="filled" severity="success" sx={{ width: '100%' }}>

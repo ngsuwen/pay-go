@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Container } from '@mui/material';
+import { Grid, Container, CircularProgress } from '@mui/material';
 import Product from '../../ProductCard';
 
 export default function FetchData({ category }) {
@@ -29,7 +29,7 @@ export default function FetchData({ category }) {
     return (
         <Container maxWidth='lg'>
             <Grid sx={{ justifyContent: 'center' }} container spacing={0.5} >
-                {products}
+                {(data.length>0)?products:<CircularProgress color="inherit" size='2rem' />}
             </Grid>
         </Container>
     );

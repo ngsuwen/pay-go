@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from 'react-router-dom'
-import { Grid, Container, Box } from '@mui/material';
+import { Grid, Container, Box, CircularProgress } from '@mui/material';
 import Product from '../../ProductCard';
 import SortOption from '../CategoryPage/SortOption';
 import CurrencyOption from '../CategoryPage/CurrencyOption';
@@ -28,6 +28,7 @@ export default function FetchData() {
     };
 
     useEffect(() => {
+        setData([])
         const getData = async () => {
             const response = await fetchData();
             // console.log(sort)
@@ -45,7 +46,7 @@ export default function FetchData() {
                 <CurrencyOption currency={currency} setCurrency={setCurrency}/>
             </Box>
             <Grid sx={{ justifyContent: 'center' }} container spacing={0.5} >
-                {products}
+                {(data.length>0)?products:<CircularProgress color="inherit" size='2rem' />}
             </Grid>
         </Container>
     );
