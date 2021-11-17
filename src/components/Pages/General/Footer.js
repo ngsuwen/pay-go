@@ -1,14 +1,15 @@
 import React from 'react';
 import { Typography, TableContainer, Table, TableRow, TableCell } from '@mui/material';
+import { Link } from 'react-router-dom'
 
 function createData(text, link, text2, link2) {
   return { text, link, text2, link2 };
 }
 
 const rows = [
-  createData('About Us', '/', 'Partnerships', '/'),
-  createData('Contact Us', '/', 'Quality', '/'),
-  createData('FAQ', '/', 'Shipping', '/'),
+  createData('About Us', '/info', 'Partnerships', '/info'),
+  createData('Contact Us', '/info', 'Quality', '/info'),
+  createData('FAQ', '/info', 'Shipping', '/info'),
 ];
 
 export default function Footer() {
@@ -25,8 +26,8 @@ export default function Footer() {
 
               {rows.map((row) => (
                 <TableRow>
-                  <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left', color:'#757575' }} >{row.text}</TableCell>
-                  <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left', color:'#757575' }} >{row.text2}</TableCell>
+                  <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left' }} ><Link style={{textDecoration:'none', color:'#757575'}} to={row.link}>{row.text}</Link></TableCell>
+                  <TableCell sx={{ padding: '0.5em', border: 'none', textAlign: 'left' }} ><Link style={{textDecoration:'none', color:'#757575'}} to={row.link2}>{row.text2}</Link></TableCell>
                 </TableRow>
               ))}
 
