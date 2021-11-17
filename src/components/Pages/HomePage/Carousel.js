@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Box, Card, CardContent, CardMedia, Typography, Grid, Button, Container } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const CCard = ({ data }) => {
     console.log(data.image)
@@ -51,6 +52,7 @@ const ViewMore = ({ data }) => {
                 <Typography variant="subtitle1" color="text.secondary">
                     {data.description}
                 </Typography>
+                <Link style={{textDecoration:'none'}} to={`/category/${data.link}`}>
                 <Button sx={{
                     bgcolor: '#e0e0e0',
                     color: 'black',
@@ -65,6 +67,7 @@ const ViewMore = ({ data }) => {
                     variant="outlined">
                     Shop Now
                 </Button>
+                </Link>
             </CardContent>
         </Grid>
     )
@@ -106,6 +109,6 @@ export default function ProductCarousel() {
     );
 }
 
-const dataArray1 = [{ name: 'ELECTRONICS', description: 'Electronics is Forever' }, { name: 'Macbook', image: 'https://source.unsplash.com/featured/?macbook' }, { name: 'Laptop', image: 'https://source.unsplash.com/featured/?laptop' }]
-const dataArray2 = [{ name: 'Diamond', image: 'https://source.unsplash.com/featured/?diamond' }, { name: 'JEWELRY', description: 'Sexier than Diamond' }, { name: 'Bracelet', image: 'https://source.unsplash.com/featured/?bracelet' }]
-const dataArray3 = [{ name: 'Dress', image: 'https://source.unsplash.com/featured/?dress' }, { name: 'Blouse', image: 'https://source.unsplash.com/featured/?blouse' }, { name: 'FASHION', description: 'Trending with Us' }]
+const dataArray1 = [{ name: 'ELECTRONICS', description: 'Electronics is Forever', link: 'electronics' }, { name: 'Macbook', image: 'https://source.unsplash.com/featured/?macbook' }, { name: 'Laptop', image: 'https://source.unsplash.com/featured/?laptop' }]
+const dataArray2 = [{ name: 'Diamond', image: 'https://source.unsplash.com/featured/?diamond' }, { name: 'JEWELRY', description: 'Sexier than Diamond', link: 'jewelery' }, { name: 'Bracelet', image: 'https://source.unsplash.com/featured/?bracelet' }]
+const dataArray3 = [{ name: 'Dress', image: 'https://source.unsplash.com/featured/?dress' }, { name: 'Blouse', image: 'https://source.unsplash.com/featured/?blouse' }, { name: 'FASHION', description: 'Trending with Us', link: "women's%20clothing" }]
