@@ -49,7 +49,7 @@ function App() {
                   <Route path='/cart' element={<Cart />} />
                   <Route path='/login' element={<Login />} />
                   <Route path='/login-invalid' element={<LoginError />} />
-                  <Route path='/user' element={userId ? <UserDetails /> : <Navigate to='/login' />} />
+                  <Route path='/user' element={<UserDetails />} />
                   <Route path='/info' element={<Info />} />
                   <Route path='/search/:term' element={<Search />} />
                   <Route path='/error' element={<Error />} />

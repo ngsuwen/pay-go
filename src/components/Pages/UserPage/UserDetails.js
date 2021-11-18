@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Grid, Divider, Container, Box, Typography } from '@mui/material';
+import { Grid, Divider, Container, Box, Typography, CircularProgress } from '@mui/material';
 import { UserContext } from "../../../App";
 
 export default function FetchData() {
@@ -10,13 +10,12 @@ export default function FetchData() {
         try {
             const response = await fetch(`https://fakestoreapi.com/users/`);
             const data = await response.json();
-            // console.log(data);
             return data;
         } catch (err) {
             console.log(err);
         }
     };
-
+    
     useEffect(() => {
         const getData = async () => {
             const response = await fetchData();
@@ -24,7 +23,7 @@ export default function FetchData() {
             setData(filter[0])
         };
         getData();
-    }, []);
+    }, [userId]);
 
     return (
         <Container maxWidth='lg' sx={{ minHeight: '62vh' }}>
@@ -76,7 +75,7 @@ export default function FetchData() {
                             </Grid>
                         </Grid>
                     </>
-                    : 'Loading'}
+                    :<CircularProgress color="inherit" size='2rem' />}
             </Box>
         </Container>
     );
