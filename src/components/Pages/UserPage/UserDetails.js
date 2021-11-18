@@ -27,7 +27,6 @@ export default function FetchData() {
 
     return (
         <Container maxWidth='lg' sx={{ minHeight: '62vh' }}>
-            <Box sx={{ justifyContent: 'center' }} >
                 {data ?
                     <>
                         <Typography variant='body1' fontWeight='bold'>Personal Profile</Typography>
@@ -75,8 +74,7 @@ export default function FetchData() {
                             </Grid>
                         </Grid>
                     </>
-                    :<CircularProgress color="inherit" size='2rem' />}
-            </Box>
+                    :<Box sx={{ display: 'flex', justifyContent: 'center' }} ><CircularProgress color="inherit" size='2rem' /></Box>}
         </Container>
     );
 };
