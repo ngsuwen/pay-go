@@ -27,7 +27,7 @@ const CCard = ({ data }) => {
                             bgcolor: '#e0e0e0',
                             opacity: 0.8,
                             color: 'black',
-                            padding: '10px',
+                            padding: '2%',
                         }}
                     >
                         <Typography variant="subtitle1">{data.name}</Typography>
@@ -57,7 +57,7 @@ const ViewMore = ({ data }) => {
                     bgcolor: '#e0e0e0',
                     color: 'black',
                     border: '2px solid black',
-                    marginTop: 5,
+                    marginTop: '10%',
                     '&:hover':{
                         color: 'black',
                         bgcolor: 'white',

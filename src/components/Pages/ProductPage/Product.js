@@ -61,10 +61,10 @@ export default function ProductPage() {
 
     return (
         <Container maxWidth='lg'>
-            <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0px 50px 75px', boxShadow: 'none' }}>
+            <Card sx={{ padding: '0px 5% 5%', boxShadow: 'none' }}>
                 {data.image ?
                     <>
-                        <CardContent sx={{ padding: 10 }}>
+                        <CardContent sx={{ padding: '5%' }}>
                             <ImageZoom image={data.image} />
                         </CardContent>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -94,7 +94,7 @@ export default function ProductPage() {
                             </CardContent>
                         </Box>
                     </>
-                    : <CircularProgress color="inherit" size='2rem' />}
+                    : <Box sx={{ display: 'flex', justifyContent: 'center' }}><CircularProgress color="inherit" size='2rem' /></Box>}
             </Card>
             <Snackbar anchorOrigin={{ vertical: "bottom", horizontal: "center" }} open={alert} autoHideDuration={1000} onClose={handleClose}>
                 <Alert onClose={handleClose} variant="filled" severity="success" sx={{ width: '100%' }}>

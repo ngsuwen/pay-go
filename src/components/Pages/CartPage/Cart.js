@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { List, Container, ListItem, Typography, Button, Grid, Divider, Dialog, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import { Box, List, Container, ListItem, Typography, Button, Grid, Divider, Dialog, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import CartItem from './CartItem';
 import { DataContext, CurrencyContext, RateContext } from '../../../App'
 
@@ -12,6 +12,7 @@ export default function Cart() {
 
     const cartItemList = cart.map((item, index) =>
         <CartItem data={item} key={index} />)
+
     let totalCost = 0
     const calTotalCost = () => cart.forEach(item => totalCost += item.quantity * item.price * (rate ? rate : 1))
     calTotalCost()
@@ -33,10 +34,12 @@ export default function Cart() {
                 }}
             >
                 <ListItem>
-                    <Typography sx={{ paddingLeft: '20px', paddingBottom: '20px' }} variant='h6' fontWeight="bold" color="text.secondary">Products</Typography>
+                    <Typography sx={{ paddingLeft: '2%', paddingBottom: '2%' }} variant='h6' fontWeight="bold" color="text.secondary">Products</Typography>
                 </ListItem>
                 <Divider />
-                {cartItemList}
+                <Box sx={{ maxWidth: 'lg', overflow: 'auto' }}>
+                    {cartItemList}
+                </Box>
                 <Divider />
                 <ListItem >
                     <Grid container direction="column" spacing={3} >

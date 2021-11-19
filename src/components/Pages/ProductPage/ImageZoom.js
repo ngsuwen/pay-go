@@ -7,7 +7,7 @@ export default function ImageZoom({image}) {
         <InnerImageZoom
             src={image}
             zoomSrc={image}
-            fullscreenOnMobile={false}
+            fullscreenOnMobile={true}
             zoomPreload={true}
             width={300}
             hasSpacer={true}
