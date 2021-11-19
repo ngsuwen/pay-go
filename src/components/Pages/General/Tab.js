@@ -8,6 +8,8 @@ import { UserContext } from '../../../App';
 const StyledTabs = styled((props) => (
     <Tabs
         {...props}
+        variant="scrollable"
+        scrollButtons="auto"
         TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
     />
 ))({
